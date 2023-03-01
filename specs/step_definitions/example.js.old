@@ -1,0 +1,39 @@
+import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
+
+Given('that I am on the first page', () => {
+  cy.visit('/');
+});
+
+When('I fill in username', () => {
+  cy.get("[type='email']").type('exempel@school.net');
+});
+
+When('I fill in password', () => {
+  cy.get("[type='password']").type('abc123');
+});
+
+When('I click on login', () => {
+  cy.get("[type='submit']").click();
+});
+
+Then('I can see the schedule', () => {
+  cy.get('img[src="/images/nodehill.jpg"]').should('be.visible');
+  // Flytta de här senare
+  cy.get('button').contains('Admin').click();
+  cy.get('div').contains('Teachers').click();
+  cy.get('a').contains('Create').click();
+
+  cy.get('input[id=email]').type('Cy@mail.com');
+  cy.get('input[id=password]').type('qwerty123');
+  cy.get('input[id=firstname]').type('Cyp')
+  cy.get('input[id=lastname]').type('Ress');
+  cy.get('input[id=initials]').type('CR');
+  cy.get('input[id=phone]').type('5555555555');
+  cy.get('input[id=color]').type('#000000');
+  cy.get('div[role=button').click();
+  cy.get('li').contains('admin').click();
+  cy.get('div.MuiBackdrop-invisible').click();
+  cy.get('button[type=submit]').click();
+
+});
+
